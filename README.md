@@ -1,4 +1,4 @@
-# Kata users written in TypeScript
+# Kata users written in TypeScript ![CI](https://github.com/xurxodev/kata-users-typescript/actions/workflows/main.yml/badge.svg)
 
 - We are here to practice Clean Architecture Development.
 - Clean Architecture is a way of structuring code.
