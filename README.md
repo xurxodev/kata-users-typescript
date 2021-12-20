@@ -1,6 +1,4 @@
-# kata-users-typescript
-Kata users written in TypeScript
-============================
+# Kata users written in TypeScript
 
 - We are here to practice Clean Architecture Development.
 - Clean Architecture is a way of structuring code.
