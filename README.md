@@ -10,6 +10,12 @@
 
 - I want to be able to list my users.
 - I want to be able to add users.
+- The business rules must to be validate it using tests
+- Define entities and value objects
+- The user must to contain name, email and password
+- The email must to be a valid email
+- The password muest to be minimum eight characters, at least one letter and one number
+- The app should show an error if we try add two users eith the same email.
 
 ---
 
