@@ -14,8 +14,8 @@
 - Define entities and value objects
 - The user must to contain name, email and password
 - The email must to be a valid email
-- The password muest to be minimum eight characters, at least one letter and one number
-- The app should show an error if we try add two users eith the same email.
+- The password must to be minimum eight characters, at least one letter and one number
+- The app should show an error if we try add two users with the same email.
 
 ---
 
