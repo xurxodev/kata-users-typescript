@@ -25,6 +25,7 @@
  - All data is local.
  - The data origin will change in the future to consume a remote API.
  - There is no persistence between execution.
+ - The dependencies in testing will be replaced by manual fake dependencies without to use any library
 
 ---
 
