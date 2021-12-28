@@ -10,8 +10,6 @@ jobs:
     unit-tests:
         name: CI Build
         runs-on: ubuntu-latest
-        env:
-            REACT_APP_ENV: staging
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2
