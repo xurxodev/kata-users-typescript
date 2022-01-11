@@ -29,6 +29,28 @@
 
 ---
 
+## Setup
+
+```
+$ yarn install
+```
+
+## Development
+
+Start app:
+
+```
+$ yarn start
+```
+
+## Tests
+
+Run unit tests:
+
+```
+$ yarn test
+```
+
 ## Resources
 
 
