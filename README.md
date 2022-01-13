@@ -14,6 +14,9 @@
 - The email must to be a valid email
 - The password must to be minimum eight characters, at least one letter and one number
 - The app should show an error if we try add two users with the same email.
+- Two different email instances but with the same properties should be equal in a comparison
+- Two different email instances but with the same properties should be equal in a comparison
+- Two different user instances but with the same id should be equal in a comparison
 
 ---
 
