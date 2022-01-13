@@ -10,12 +10,13 @@
 
 - I want to be able to list my users.
 - I want to be able to add users.
-- The business rules must to be validate it using tests
-- Define entities and value objects
-- The user must to contain name, email and password
+- The user must to contain name, email and password as mandatory
 - The email must to be a valid email
 - The password must to be minimum eight characters, at least one letter and one number
 - The app should show an error if we try add two users with the same email.
+- Two different email instances but with the same properties should be equal in a comparison
+- Two different email instances but with the same properties should be equal in a comparison
+- Two different user instances but with the same id should be equal in a comparison
 
 ---
 
@@ -26,8 +27,33 @@
  - The data origin will change in the future to consume a remote API.
  - There is no persistence between execution.
  - The dependencies in testing will be replaced by manual fake dependencies without to use any library
+ - The business rules must to be validate it using tests
+ - Define entities, value objects and use cases
+ - Use MVP in the presentation layer
 
 ---
+
+## Setup
+
+```
+$ yarn install
+```
+
+## Development
+
+Start app:
+
+```
+$ yarn start
+```
+
+## Tests
+
+Run unit tests:
+
+```
+$ yarn test
+```
 
 ## Resources
 
