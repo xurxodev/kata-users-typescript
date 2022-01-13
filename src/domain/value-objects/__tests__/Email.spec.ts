@@ -1,3 +1,4 @@
+import { notDeepEqual } from "assert";
 import { Email } from "../Email";
 
 describe("Email", () => {
@@ -10,7 +11,8 @@ describe("Email", () => {
             email => expect(email.value).toEqual(emailValue)
         );
     });
-    it("should return InvalidEmptyEmail error if value argument is empty", () => {
+
+    it("should return email cannot be blank error if value argument is empty", () => {
         const emailResult = Email.create("");
 
         emailResult.fold(
@@ -21,7 +23,8 @@ describe("Email", () => {
             () => fail("should be fail")
         );
     });
-    it("should return InvalidId error if value argument is invalid", () => {
+
+    it("should return invalid email error if value argument is invalid", () => {
         const emailResult = Email.create("infokaratestarsapp.com");
 
         emailResult.fold(
@@ -31,5 +34,19 @@ describe("Email", () => {
             },
             () => fail("should be fail")
         );
+    });
+
+    it("should be equals two instances of email if it has the same property values", () => {
+        const email1 = Email.create("info@karatestarsapp.com").get();
+        const email2 = Email.create("info@karatestarsapp.com").get();
+
+        expect(email1.equals(email2)).toBe(true);
+    });
+
+    it("should not be equals two instances of email if it has the same property values", () => {
+        const email1 = Email.create("info@karatestarsapp.com").get();
+        const email2 = Email.create("hello@karatestarsapp.com").get();
+
+        expect(email1.equals(email2)).toBe(false);
     });
 });

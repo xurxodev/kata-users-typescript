@@ -10,6 +10,7 @@ describe("Password", () => {
             email => expect(email.value).toEqual(passwordValue)
         );
     });
+
     it("should return InvalidEmptyPassword error if value argument is empty", () => {
         const passwordResult = Password.create("");
 
@@ -20,5 +21,19 @@ describe("Password", () => {
             },
             () => fail("should be fail")
         );
+    });
+
+    it("should be equals two instances of password if it has the same property values", () => {
+        const password1 = Password.create("12345678A").get();
+        const password2 = Password.create("12345678A").get();
+
+        expect(password1).toEqual(password2);
+    });
+
+    it("should not be equals two instances of email if it has the same property values", () => {
+        const password1 = Password.create("12345678A").get();
+        const password2 = Password.create("87654321A").get();
+
+        expect(password1).not.toEqual(password2);
     });
 });

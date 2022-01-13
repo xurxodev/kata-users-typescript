@@ -25,19 +25,36 @@ export class User extends Entity {
         this.password = data.password;
     }
 
-    public static create(name: string, email: string, password: string) {
-        return this.validateAndCreate(name, email, password);
+    public static create(
+        name: string,
+        email: string,
+        password: string,
+        id = Id.generateId().value
+    ) {
+        return this.validateAndCreate(id, name, email, password);
     }
 
     private static validateAndCreate(
+        id: string,
         name: string,
         email: string,
         password: string
     ): Either<ValidationError<User>[], User> {
+        const idValidation = Id.createExisted(id);
         const emailValidation = Email.create(email);
         const passwordValidation = Password.create(password);
 
         const errors: ValidationError<User>[] = [
+            {
+                property: "id" as const,
+                errors: idValidation
+                    ? idValidation.fold(
+                          errors => errors,
+                          () => []
+                      )
+                    : [],
+                value: id,
+            },
             {
                 property: "email" as const,
                 errors: emailValidation
@@ -64,7 +81,7 @@ export class User extends Entity {
         if (errors.length === 0) {
             return Either.right(
                 new User({
-                    id: Id.generateId(),
+                    id: idValidation.get(),
                     name,
                     email: emailValidation.get(),
                     password: passwordValidation.get(),
