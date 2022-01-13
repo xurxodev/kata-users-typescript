@@ -47,6 +47,7 @@ export class UsersTerminalView implements UsersView {
     }
 
     showWelcomeMessage() {
+        console.clear();
         console.log("Welcome to your users kata typescript :)");
     }
 
