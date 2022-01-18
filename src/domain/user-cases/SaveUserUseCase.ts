@@ -26,7 +26,7 @@ export class SaveUserUserCase {
             async () => {
                 return Either.left({
                     kind: "DuplicateResourceError",
-                    message: `There is already a user with email ${user.email.value}`,
+                    message: `There is already an user with email ${user.email.value}`,
                 });
             }
         );
