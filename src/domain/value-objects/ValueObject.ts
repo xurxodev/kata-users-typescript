@@ -3,13 +3,7 @@ interface ValueObjectProps {
 }
 
 export abstract class ValueObject<T extends ValueObjectProps> {
-    constructor(protected props: T) {
-        const baseProps: any = {
-            ...props,
-        };
-
-        this.props = baseProps;
-    }
+    constructor(protected props: T) {}
 
     public equals(vo?: ValueObject<T>): boolean {
         if (vo === null || vo === undefined) {
