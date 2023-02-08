@@ -3,7 +3,7 @@ import { Email } from "../value-objects/Email";
 import { Password } from "../value-objects/Password";
 import { Id } from "../value-objects/Id";
 import { Either } from "../types/Either";
-import { ValidationError } from "../types/Errors";
+import { ValidationError, ValidationErrorKey } from "../types/Errors";
 import { validateRequired } from "../utils/validations";
 
 interface UserData extends EntityData {
@@ -45,36 +45,9 @@ export class User extends Entity {
         const passwordValidation = Password.create(password);
 
         const errors: ValidationError<User>[] = [
-            {
-                property: "id" as const,
-                errors: idValidation
-                    ? idValidation.fold(
-                          errors => errors,
-                          () => []
-                      )
-                    : [],
-                value: id,
-            },
-            {
-                property: "email" as const,
-                errors: emailValidation
-                    ? emailValidation.fold(
-                          errors => errors,
-                          () => []
-                      )
-                    : [],
-                value: email,
-            },
-            {
-                property: "password" as const,
-                errors: passwordValidation
-                    ? passwordValidation.fold(
-                          errors => errors,
-                          () => []
-                      )
-                    : [],
-                value: email,
-            },
+            this.extractError("id", idValidation, id),
+            this.extractError("email", emailValidation, email),
+            this.extractError("password", passwordValidation, password),
             { property: "name" as const, errors: validateRequired(name), value: name },
         ].filter(validation => validation.errors.length > 0);
 
@@ -90,5 +63,22 @@ export class User extends Entity {
         } else {
             return Either.left(errors);
         }
+    }
+
+    private static extractError<T>(
+        property: keyof User,
+        validation: Either<ValidationErrorKey[], T>,
+        value: unknown
+    ): ValidationError<User> {
+        return {
+            property,
+            errors: validation
+                ? validation.fold(
+                      errors => errors,
+                      () => []
+                  )
+                : [],
+            value,
+        };
     }
 }
