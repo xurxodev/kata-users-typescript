@@ -1,4 +1,3 @@
-import { notDeepEqual } from "assert";
 import { Id } from "../../value-objects/Id";
 import { User } from "../User";
 
